@@ -76,6 +76,17 @@ def games(request):
 def players(request):
     return render(request, 'players.html')
 
+
+# @login_required
+def help(request):
+    return render(request, 'help.html')
+
+
+# @login_required
+def contact(request):
+    return render(request, 'contact.html')
+
+
 def validate_twilio_request(f):
     """Validates that incoming requests genuinely originated from Twilio"""
     @wraps(f)
