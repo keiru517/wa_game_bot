@@ -17,8 +17,8 @@ urlpatterns = [
     # path('upload_file', views.upload, name="upload"),
     # path('prompts', views.prompts, name="prompts"),
     # path('settings', views.settings, name="settings"),
-    # path('help', views.help, name="help"),
-    # path('contact', views.contact, name="contact"),
+    path('help', views.help, name="help"),
+    path('contact', views.contact, name="contact"),
     # path('signout', views.sign_out, name="sign_out"),
     # path('get_percentage', views.get_percentage, name="get_percentage"),
 
