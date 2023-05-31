@@ -86,6 +86,10 @@ def help(request):
 def contact(request):
     return render(request, 'contact.html')
 
+# @login_required
+def settings(request):
+    return render(request, 'settings.html')
+
 
 def validate_twilio_request(f):
     """Validates that incoming requests genuinely originated from Twilio"""
