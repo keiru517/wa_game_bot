@@ -17,6 +17,8 @@ from .bot_util import *
 def index(request):
     return render(request, 'index.html')
 
+
+
 def validate_twilio_request(f):
     """Validates that incoming requests genuinely originated from Twilio"""
     @wraps(f)

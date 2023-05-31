@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Players</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active">Players</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+
+        <section class="section">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Players</h5>
+                  <div class="row">
+                    <div class="col-sm-3 mb-2">
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected="">Games</option>
+                        <option value="1" style="font-size: 1rem;">My Games</option>
+                        <option value="2">Other Games</option>
+                      </select>
+                    </div> 
+                    <div class="col-sm-3 mb-2">
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected="">Game ID</option>
+                        <option value="1">14</option>
+                        <option value="2">24</option>
+                        <option value="3">34</option>
+                      </select>
+                    </div> 
+
+                    <div class="col-sm-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked="">
+                        <label class="form-check-label" for="gridRadios1">
+                          All
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                        <label class="form-check-label" for="gridRadios2">
+                          Playerlist
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked="">
+                        <label class="form-check-label" for="gridRadios1">
+                          Waitlist
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                        <label class="form-check-label" for="gridRadios2">
+                          Outlist
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">User Name</th>
+                        <th scope="col">Phone Number</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Brandon Jacob</td>
+                        <td>380735889188</td>
+                        <td><span class="badge bg-success">Playerlist</span></td>
+                        <td>2016-05-25</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Bridie Kessler</td>
+                        <td>380735889112</td>
+                        <td><span class="badge bg-warning">Waitlist</span></td>
+                        <td>2014-12-05</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Ashleigh Langosh</td>
+                        <td>380735889144</td>
+                        <td><span class="badge bg-secondary">Outlist</span></td>
+                        <td>2011-08-12</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">4</th>
+                        <td>Angus Grady</td>
+                        <td>380735889133</td>
+                        <td><span class="badge bg-success">Playerlist</span></td>
+                        <td>2012-06-11</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">5</th>
+                        <td>Raheem Lehner</td>
+                        <td>380735889113</td>
+                        <td><span class="badge bg-danger">Blocked</span></td>
+                        <td>2011-04-19</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- End Table with stripped rows -->
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Library</h5>
+            
+          </div>
+        </div> -->
+
+      </div>
+
+      <!-- <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Example Card</h5>
+            <p>This is an examle page with no contrnt. You can use it as a starter for your custom pages.</p>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </section>
+  <div class="modal fade" id="deleteModal" tabindex="-1" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Are you sure?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          The user will be deleted permanently.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main><!-- End #main -->
+{% endblock %}

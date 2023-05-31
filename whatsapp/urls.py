@@ -6,6 +6,8 @@ from . import views
 app_name='whatsapp'
 urlpatterns = [
     path('', views.index, name="index"),
+    path('games', views.games, name="games"),
+    path('players', views.players, name="players"),
     # path('login', views.login_view, name="login_view"),
     # path('register', views.register_view, name="register_view"),
     # path('register_user', views.register, name="register"),
