@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Documents</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item">Documents</li>
+        <li class="breadcrumb-item active">Library</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+
+        <section class="section">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Library</h5>
+                  <p>You can find and read any industy-specific documentations and resources here. <a href="/cpa">Go to our chatbot</a> </p>
+                  <!-- <div class="col-md-2 col-lg-2">
+                    <div class="form-floating mb-3">
+                      <select class="form-select" id="filter_doc" aria-label="Category">
+                        <option value="cpa">Accounting/CPA</option>
+                        <option value="hr">Human Resources</option>
+                        <option value="lg">Legal</option>
+                        <option value="pd">Private Document</option>
+                      </select>
+                      <label for="floatingSelect">Category</label>
+                    </div>
+                  </div> -->
+                  <hr>
+                  <!-- Table with stripped rows -->
+                  <table class="table datatable table-striped" id="doc_table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Document Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Page</th>
+                        <th scope="col">Upload Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for document in documents %}
+                      <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        
+                        <td>
+                          <a href="{{document.file.url}}" target="_blank">
+                            {{document.name}}
+                          </a>
+                        </td>
+                        <td>{{document.category}}</td>
+                        <td>{{document.page}}</td>
+                        <td>{{document.created_at}}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  <!-- End Table with stripped rows -->
+    
+                </div>
+              </div>
+    
+            </div>
+          </div>
+        </section>
+        
+        <!-- <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Library</h5>
+            
+          </div>
+        </div> -->
+
+      </div>
+
+      <!-- <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Example Card</h5>
+            <p>This is an examle page with no contrnt. You can use it as a starter for your custom pages.</p>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </section>
+
+</main><!-- End #main -->
+{% endblock %}

@@ -1,0 +1,696 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Edison AI</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+  {% comment %} <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet"> {% endcomment %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  {% comment %} <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet"> {% endcomment %}
+  <link href="{% static 'assets/vendor/quill/quill.snow.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/quill/quill.bubble.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.3.0/remixicon.css" integrity="sha512-0JEaZ1BDR+FsrPtq5Ap9o05MUwn8lKs2GiCcRVdOH0qDcUcCoMKi8fDVJ9gnG8VN1Mp/vuWw2sMO0SQom5th4g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  {% comment %} <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet"> {% endcomment %}
+  <link href="{% static 'assets/vendor/simple-datatables/style.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="/" class="logo d-flex align-items-center">
+        <img src="{% static 'assets/img/favicon.png' %}" alt="">
+        <span class="d-none d-lg-block"><img src="{% static 'assets/img/title1.png' %}" alt=""></span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <!-- <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-bell"></i>
+            <span class="badge bg-primary badge-number">4</span>
+          </a>
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+            <li class="dropdown-header">
+              You have 4 new notifications
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-exclamation-circle text-warning"></i>
+              <div>
+                <h4>Lorem Ipsum</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>30 min. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-x-circle text-danger"></i>
+              <div>
+                <h4>Atque rerum nesciunt</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>1 hr. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-check-circle text-success"></i>
+              <div>
+                <h4>Sit rerum fuga</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>2 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-info-circle text-primary"></i>
+              <div>
+                <h4>Dicta reprehenderit</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>4 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="dropdown-footer">
+              <a href="#">Show all notifications</a>
+            </li>
+
+          </ul>
+
+        </li> -->
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="{% static 'assets/img/user.jfif' %}" alt="Profile" class="rounded-circle" style="width:36px; height:36px">
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{request.user.first_name}},{{request.user.last_name}}</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>{{request.user.username}}</h6>
+              <!-- <span>Advisor</span> -->
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/settings">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <!-- <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-gear"></i>
+                <span>Account Settings</span>
+              </a>
+            </li> 
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+          -->
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/help">
+                <i class="bi bi-question-circle"></i>
+                <span>Need Help?</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/signout">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        {% if request.path == '/' %}
+        <a class="nav-link " href="/">
+          {% else %}
+          <a class="nav-link collapsed" href="/">
+            {% endif %}
+            <i class="bi bi-grid"></i>
+            <span>Dashboard</span>
+          </a>
+      </li>
+      <!-- <li class="nav-item">
+        {% if request.path == '/ai' %}
+        <a class="nav-link " href="/ai">
+          {% else %}
+          <a class="nav-link collapsed" href="/ai">
+            {% endif %}
+            <i class="bx bx-bot"></i>
+            <span>AI Assistance</span>
+          </a>
+      </li> -->
+
+      <li class="nav-item">
+        {% if request.path == '/cpa' or request.path == '/legal' or request.path == '/hr' %}
+          <a class="nav-link collapse" data-bs-target="#ai-nav" data-bs-toggle="collapse" href="#" aria-expanded="false">
+            <i class="bx bx-bot"></i><span>AI Assistance</span><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul id="ai-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav" style="">
+            <li>
+              {% if request.path == '/cpa' %}
+              <a href="/cpa" class="active">
+                <i class="bi bi-circle"></i><span>CPA</span>
+              </a>
+              {% else %}
+              <a href="/cpa" class="">
+                <i class="bi bi-circle"></i><span>CPA</span>
+              </a>
+              {% endif %}
+            </li>
+            <li>
+              {% if request.path == '/legal' %}
+              <a href="/legal" class="active">
+                <i class="bi bi-circle"></i><span>Legal</span>
+              </a>
+              {% else %}
+              <a href="/legal">
+                <i class="bi bi-circle"></i><span>Legal</span>
+              </a>
+              {% endif %}
+            </li>
+            <li>
+              {% if request.path == '/hr' %}
+              <a href="/hr" class="active">
+                <i class="bi bi-circle"></i><span>HR</span>
+              </a>
+              {% else %}
+              <a href="/hr" class="">
+                <i class="bi bi-circle"></i><span>HR</span>
+              </a>
+              {% endif %}
+            </li>
+          </ul>
+        {% else %}
+          <a class="nav-link collapsed" data-bs-target="#ai-nav" data-bs-toggle="collapse" href="#" aria-expanded="false">
+            <i class="bx bx-bot"></i><span>AI Assistance</span><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul id="ai-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav" style="">
+            <li>
+              <a href="/cpa">
+                <i class="bi bi-circle"></i><span>CPA</span>
+              </a>
+            </li>
+            <li>
+              <a href="/legal">
+                <i class="bi bi-circle"></i><span>Legal</span>
+              </a>
+            </li>
+            <li>
+              <a href="/hr">
+                <i class="bi bi-circle"></i><span>HR</span>
+              </a>
+            </li>
+          </ul>
+          {% endif %}
+
+      </li>
+
+      {% if request.user.is_staff %}
+      <li class="nav-item">
+        {% if request.path == '/clients' %}
+        <a class="nav-link " href="/clients">
+          {% else %}
+          <a class="nav-link collapsed" href="/clients">
+            {% endif %}
+            <i class="bi bi-people"></i>
+            <span>Clients</span>
+          </a>
+      </li>
+      {% endif %}
+      {% if request.user.is_staff %}
+      <li class="nav-item">
+        {% if request.path == '/library' or request.path == '/upload' %}
+        <a class="nav-link collapse" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#"
+          aria-expanded="true">
+          <i class="ri-book-2-line"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+          <li>
+            {% if request.path == '/library' %}
+            <a href="library" class="active">
+              <i class="bi bi-circle"></i><span>Library</span>
+            </a>
+            {% else %}
+            <a href="library">
+              <i class="bi bi-circle"></i><span>Library</span>
+            </a>
+            {% endif %}
+          </li>
+          <li>
+            {% if request.path == '/upload' %}
+            <a href="upload" class="active">
+              <i class="bi bi-circle"></i><span>Upload</span>
+            </a>
+            {% else %}
+            <a href="upload">
+              <i class="bi bi-circle"></i><span>Upload</span>
+            </a>
+            {% endif %}
+          </li>
+        </ul>
+        {% else %}
+        <a class="nav-link collapse collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="ri-book-2-line"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/library">
+              <i class="bi bi-circle"></i><span>Library</span>
+            </a>
+          </li>
+          <li>
+            <a href="/upload">
+              <i class="bi bi-circle"></i><span>Upload</span>
+            </a>
+          </li>
+        </ul>
+        {% endif %}
+      </li>
+      {% else %}
+      <li class="nav-item">
+        {% if request.path == '/library' or request.path == '/upload' %}
+        <a class="nav-link collapse" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#"
+          aria-expanded="true">
+          <i class="ri-book-2-line"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+          <li>
+            {% if request.path == '/library' %}
+            <a href="library" class="active">
+              <i class="bi bi-circle"></i><span>Library</span>
+            </a>
+            {% else %}
+            <a href="library">
+              <i class="bi bi-circle"></i><span>Library</span>
+            </a>
+            {% endif %}
+          </li>
+        </ul>
+        {% else %}
+        <a class="nav-link collapse collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="ri-book-2-line"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/library">
+              <i class="bi bi-circle"></i><span>Library</span>
+            </a>
+          </li>
+        </ul>
+        {% endif %}
+      </li>
+      {% endif %}
+
+
+      <li class="nav-item">
+        {% if request.path == '/prompts' %}
+        <a class="nav-link " href="/prompts">
+          {% else %}
+          <a class="nav-link collapsed" href="/prompts">
+            {% endif %}
+            <i class="bx bx-notepad"></i>
+            <span>Prompts</span>
+          </a>
+      </li>
+      <!-- <li class="nav-item">
+        {% if request.path == '/settings' %}
+        <a class="nav-link " href="/settings">
+          {% else %}
+          <a class="nav-link collapsed" href="/settings">
+            {% endif %}
+            <i class="ri-settings-4-line"></i>
+            <span>Settings</span>
+          </a>
+      </li> -->
+
+      <li class="nav-item">
+        {% if request.path == '/help' %}
+        <a class="nav-link " href="/help">
+          {% else %}
+          <a class="nav-link collapsed" href="/help">
+            {% endif %}
+            <i class="bx bx-help-circle"></i>
+            <span>Help and Support</span>
+          </a>
+      </li>
+      <li class="nav-item">
+        {% if request.path == '/contact' %}
+        <a class="nav-link" href="/contact">
+          {% else %}
+          <a class="nav-link collapsed" href="/contact">
+            {% endif %}
+            <i class="bi bi-envelope"></i>
+            <span>Contact</span>
+          </a>
+      </li>
+
+
+      <!-- <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Alerts</span>
+            </a>
+          </li>
+          <li>
+            <a href="components-accordion.html">
+              <i class="bi bi-circle"></i><span>Accordion</span>
+            </a>
+          </li>
+          <li>
+            <a href="components-badges.html">
+              <i class="bi bi-circle"></i><span>Badges</span>
+            </a>
+          </li>
+          <li>
+            <a href="components-breadcrumbs.html">
+              <i class="bi bi-circle"></i><span>Breadcrumbs</span>
+            </a>
+          </li>
+          <li>
+            <a href="components-buttons.html">
+              <i class="bi bi-circle"></i><span>Buttons</span>
+            </a>
+          </li>
+          <li>
+            <a href="components-cards.html">
+              <i class="bi bi-circle"></i><span>Cards</span>
+            </a>
+          </li>
+          <li>
+            <a href="components-carousel.html">
+              <i class="bi bi-circle"></i><span>Carousel</span>
+            </a>
+          </li>
+          <li>
+            <a href="components-list-group.html">
+              <i class="bi bi-circle"></i><span>List group</span>
+            </a>
+          </li>
+          <li>
+            <a href="components-modal.html">
+              <i class="bi bi-circle"></i><span>Modal</span>
+            </a>
+          </li>
+          <li>
+            <a href="components-tabs.html">
+              <i class="bi bi-circle"></i><span>Tabs</span>
+            </a>
+          </li>
+          <li>
+            <a href="components-pagination.html">
+              <i class="bi bi-circle"></i><span>Pagination</span>
+            </a>
+          </li>
+          <li>
+            <a href="components-progress.html">
+              <i class="bi bi-circle"></i><span>Progress</span>
+            </a>
+          </li>
+          <li>
+            <a href="components-spinners.html">
+              <i class="bi bi-circle"></i><span>Spinners</span>
+            </a>
+          </li>
+          <li>
+            <a href="components-tooltips.html">
+              <i class="bi bi-circle"></i><span>Tooltips</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="forms-elements.html">
+              <i class="bi bi-circle"></i><span>Form Elements</span>
+            </a>
+          </li>
+          <li>
+            <a href="forms-layouts.html">
+              <i class="bi bi-circle"></i><span>Form Layouts</span>
+            </a>
+          </li>
+          <li>
+            <a href="forms-editors.html">
+              <i class="bi bi-circle"></i><span>Form Editors</span>
+            </a>
+          </li>
+          <li>
+            <a href="forms-validation.html">
+              <i class="bi bi-circle"></i><span>Form Validation</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="tables-general.html">
+              <i class="bi bi-circle"></i><span>General Tables</span>
+            </a>
+          </li>
+          <li>
+            <a href="tables-data.html">
+              <i class="bi bi-circle"></i><span>Data Tables</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-bar-chart"></i><span>Charts</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="charts-chartjs.html">
+              <i class="bi bi-circle"></i><span>Chart.js</span>
+            </a>
+          </li>
+          <li>
+            <a href="charts-apexcharts.html">
+              <i class="bi bi-circle"></i><span>ApexCharts</span>
+            </a>
+          </li>
+          <li>
+            <a href="charts-echarts.html">
+              <i class="bi bi-circle"></i><span>ECharts</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-gem"></i><span>Icons</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="icons-bootstrap.html">
+              <i class="bi bi-circle"></i><span>Bootstrap Icons</span>
+            </a>
+          </li>
+          <li>
+            <a href="icons-remix.html">
+              <i class="bi bi-circle"></i><span>Remix Icons</span>
+            </a>
+          </li>
+          <li>
+            <a href="icons-boxicons.html">
+              <i class="bi bi-circle"></i><span>Boxicons</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-heading">Pages</li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="users-profile.html">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-faq.html">
+          <i class="bi bi-question-circle"></i>
+          <span>F.A.Q</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-contact.html">
+          <i class="bi bi-envelope"></i>
+          <span>Contact</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-register.html">
+          <i class="bi bi-card-list"></i>
+          <span>Register</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-login.html">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>Login</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-error-404.html">
+          <i class="bi bi-dash-circle"></i>
+          <span>Error 404</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-blank.html">
+          <i class="bi bi-file-earmark"></i>
+          <span>Blank</span>
+        </a>
+      </li> -->
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  {% block body %}
+
+  {% endblock %}
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>Edison AI</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      Designed by Dan Powers
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/apexcharts/apexcharts.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/chart.js/chart.umd.js' %}"></script>
+  <script src="{% static 'assets/vendor/echarts/echarts.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/quill/quill.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/simple-datatables/simple-datatables.js' %}"></script>
+  <script src="{% static 'assets/vendor/tinymce/tinymce.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+  <!-- <script src="{% static 'assets/js/jquery.min.js' %}"></script> -->
+  </script>
+</body>
+
+</html>

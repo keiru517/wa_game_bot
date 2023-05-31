@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Documents</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item">Documents</li>
+        <li class="breadcrumb-item active">Upload</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+  {% if message %}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endif %}
+  <section class="section dashboard">
+    <div class="row">
+      <div class="col-lg-8">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Upload New File</h5>
+
+            <!-- General Form Elements -->
+            <form action="{% url 'pdfchat:upload' %}" enctype="multipart/form-data" method="POST">
+              {% csrf_token %}
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Category</label>
+                <div class="col-sm-10">
+                  <select class="form-select" aria-label="Default select example" name="category">
+                    <option value="CPA">Accounting/CPA</option>
+                    <option value="HR">Human Resources</option>
+                    <option value="Legal">Legal</option>
+                  </select>
+                </div>
+              </div>
+
+              <br>
+
+              <div class="row mb-3">
+                <label for="inputNumber" class="col-sm-2 col-form-label">Page</label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control" name="page">
+                </div>
+              </div>
+
+              <br>
+              <div class="row mb-3">
+                <label for="inputNumber" class="col-sm-2 col-form-label">File Upload</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="file" id="formFile" name="document" required>
+                </div>
+              </div>
+
+              <br>
+              <div class="row mb-3">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Description</label>
+                <div class="col-sm-10">
+                  <textarea class="form-control" style="height: 175px" name="description"></textarea>
+                </div>
+              </div>
+
+              <br>
+              <div class="row mb-3">
+                <div class="col-sm-10">
+                  <button type="submit" class="btn btn-primary">Upload</button>
+                </div>
+              </div>
+
+            </form><!-- End General Form Elements -->
+
+          </div>
+        </div>
+
+      </div>
+      <!-- Right side columns -->
+      <div class="col-lg-4">
+
+        <!-- Recent Activity -->
+        <div class="card">
+          <!-- <div class="filter">
+            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+              <li class="dropdown-header text-start">
+                <h6>Filter</h6>
+              </li>
+
+              <li><a class="dropdown-item" href="#">Today</a></li>
+              <li><a class="dropdown-item" href="#">This Month</a></li>
+              <li><a class="dropdown-item" href="#">This Year</a></li>
+            </ul>
+          </div> -->
+
+          <div class="card-body">
+            <h5 class="card-title">Recent Activity</h5>
+
+            <div class="activity">
+              {% for activity in activities %}
+              <div class="activity-item d-flex">
+                <div class="activite-label">{{activity.created_at}}</div>
+                {% if activity.type == '1' %}
+                <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                {% elif activity.type == '2' %}
+                <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                {% elif activity.type == '3' %}
+                <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
+                {% elif activity.type == '4' %}
+                <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
+                {% elif activity.type == '5' %}
+                <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
+                {% endif %}
+                <div class="activity-content">
+                  {{activity.activity}}
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+
+          </div>
+        </div><!-- End Recent Activity -->
+
+        <!-- Website Traffic -->
+        <div class="card">
+
+          <div class="card-body pb-0">
+            <h5 class="card-title">Document Category</h5>
+            Total:<span id="total" class="text-success pt-1 fw-bold ml-10">0</span>
+
+            <div id="trafficChart" style="min-height: 280px;" class="echart"></div>
+
+            <script>
+              document.addEventListener("DOMContentLoaded", () => {
+                var hostUrl = "{{ request.scheme }}://{{ request.get_host }}";
+                var hr, legal, cpa, pd;
+                fetch('{{hostUrl}}/get_percentage')
+                  .then(res => res.json())
+                  .then(data => {
+                    hr = data['hr']
+                    legal = data['legal']
+                    cpa = data['cpa']
+                    var total = data['total']
+                    document.querySelector('#total').textContent = total.toString();
+                    echarts.init(document.querySelector("#trafficChart")).setOption({
+                      tooltip: {
+                        trigger: 'item'
+                      },
+                      legend: {
+                        top: '5%',
+                        left: 'center'
+                      },
+                      series: [{
+                        name: 'Uploaded documents',
+                        type: 'pie',
+                        radius: ['40%', '70%'],
+                        avoidLabelOverlap: false,
+                        label: {
+                          show: false,
+                          position: 'center'
+                        },
+                        emphasis: {
+                          label: {
+                            show: true,
+                            fontSize: '18',
+                            fontWeight: 'bold'
+                          }
+                        },
+                        labelLine: {
+                          show: false
+                        },
+                        data: [{
+                          value: cpa,
+                          name: 'CPA'
+                        },
+                        {
+                          value: hr,
+                          name: 'HR'
+                        },
+                        {
+                          value: legal,
+                          name: 'Legal'
+                        }
+                        ]
+                      }]
+                    });
+                  });
+              })
+            </script>
+
+          </div>
+        </div><!-- End Website Traffic -->
+
+      </div><!-- End Right side columns -->
+
+    </div>
+  </section>
+</main><!-- End #main -->
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Documents</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">Clients</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+
+        <section class="section">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Clients</h5>
+                  <!-- <p>You can find and read any industy-specific documentations and resources here.</p>
+                  <div class="col-md-2 col-lg-2">
+                    <div class="form-floating mb-3">
+                      <select class="form-select" id="floatingSelect" aria-label="Category">
+                        <option selected="">Accounting/CPA</option>
+                        <option value="1">Human Resources</option>
+                        <option value="2">Legal</option>
+                      </select>
+                      <label for="floatingSelect">Category</label>
+                    </div>
+                  </div> -->
+                  <hr>
+                  <!-- Table with stripped rows -->
+                  <table class="table datatable">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">User Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Registered Date</th>
+                        <th scope="col">Status</th>
+                        {% if request.user.is_staff %}
+                          <th scope="col">Action</th>
+                        {% endif %}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for client in clients %}
+                      <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{client.username}}</td>
+                        <td>{{client.email}}</td>
+                        <td>{{client.date_joined}}</td>
+                        {% if client.is_active %}
+                          <td><span class="badge bg-success">Active</span></td>
+                        {% else %}
+                          <td><span class="badge bg-danger">Rejected</span></td>
+                        {% endif %}
+                        {% if request.user.is_staff %}
+                        <td>
+                          <a href="#" class="btn btn-warning btn-sm" title="Remove my profile image"><i
+                              class="bi bi-pencil"></i></a>
+                          <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                            title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                        </td>
+                        {% endif %}
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  <!-- End Table with stripped rows -->
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Library</h5>
+            
+          </div>
+        </div> -->
+
+      </div>
+
+      <!-- <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Example Card</h5>
+            <p>This is an examle page with no contrnt. You can use it as a starter for your custom pages.</p>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </section>
+  <div class="modal fade" id="deleteModal" tabindex="-1" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Are you sure?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          The user will be deleted permanently.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main><!-- End #main -->
+{% endblock %}

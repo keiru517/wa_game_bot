@@ -1,909 +1,703 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>Leeg</title>
-    <meta content="" name="description" />
-    <meta content="" name="keywords" />
+{% block body %}
+<main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Dashboard</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
 
-    <!-- Favicons -->
-    <link href="{% static 'assets/img/favicon.png' %}" rel="icon" />
-    <link
-      href="{% static 'assets/img/apple-touch-icon.png' %}"
-      rel="apple-touch-icon"
-    />
-
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-      rel="stylesheet"
-    />
-
-    <!-- Vendor CSS Files -->
-    <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet" />
-    <link
-      href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}"
-      rel="stylesheet"
-    />
-    <link
-      href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}"
-      rel="stylesheet"
-    />
-    <link
-      href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}"
-      rel="stylesheet"
-    />
-    <link
-      href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}"
-      rel="stylesheet"
-    />
-    <link
-      href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}"
-      rel="stylesheet"
-    />
-
-    <!-- Template Main CSS File -->
-    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
-    <link
-      href="https://unpkg.com/webkul-micron@1.1.6/dist/css/micron.min.css"
-      type="text/css"
-      rel="stylesheet"
-    />
-  </head>
-
-  <body>
-    <!-- ======= Mobile nav toggle button ======= -->
-    <!-- ======= Header ======= -->
-
-    <nav class="nav-landing-container">
-      <div class="top-nav-landing-inner">
-        <div class="top-nav-landing-logo-block">
-          <div class="top-nav-landing-logo">
-            <img
-              alt=""
-              src="{% static 'assets/img/logoBlack.svg' %}"
-              decoding="async"
-              data-nimg="fill"
-              loading="lazy"
-              style="
-                position: absolute;
-                height: 100%;
-                width: 100%;
-                left: 0;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                color: transparent;
-              "
-            />
-          </div>
-          <div class="top-nav-landing-logoname">Leeg</div>
-        </div>
-        <div class="top-nav-landing-block-menu">
-          <ul class="menu-list">
-            <li class="nav-link">
-              <a href="#pricing"> Pricing </a>
-            </li>
-            <li class="nav-link">
-              <a href="#faq">FAQ</a>
-            </li>
-            <li class="nav-link">
-              <a href="#contact">Contact us</a>
-            </li>
-          </ul>
-        </div>
+    <section class="section dashboard">
+      <div class="row">
+        <h1>YOUR IVY LEAGUE TRAINED ASSISTANT</h1>
       </div>
-    </nav>
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class="center-block">
-      <!-- <section id="hero" class="d-flex flex-column justify-content-center"> -->
-      <div class="center-block-child" data-aos="zoom-in" data-aos-delay="100">
-        <h1 class="index-h1-title">
-          Nourish
-          <br class="not-onDesk" />
-          <span class="index-small-mobile"> your </span>
-          <br class="not-onMobile" />
-          <span
-            id="yellow-sparkling"
-            class="typed"
-            data-typed-items="health🥑, brain🍐, body🍊"
-            style="background-color: #01eacc"
-          ></span>
-          <br class="not-onDesk" />
-          <span class="not-onDesk"> easily </span>
-          with AI
-          <span class="not-onMobile">.</span>
-        </h1>
-        <br class="not-onMobile" />
-        <h3 class="index-h3-title">
-          Try Leeg ® Today - Your personal AI nutrition coach on
-          <span style="background-color: #ffec0f; font-weight: 500"
-            >Whatsapp</span
-          >, providing personalized support for a healthier you!
-        </h3>
-        <div class="input-div">
-          <div class="free">
-            <img
-              alt=""
-              src="{% static 'assets/img/freetrial.svg' %}"
-              decoding="async"
-              data-nimg="fill"
-              loading="lazy"
-              style="
-                position: absolute;
-                height: 100%;
-                width: 100%;
-                left: 0;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                color: transparent;
-              "
-            />
-          </div>
-          <div id="phone-input" class="phone-input">
-            <!-- <div class="phone-prefix">
-              <img
-                alt=""
-                srcset="{% static 'assets/img/france.webp' %}"
-                src="{% static 'assets/img/france.webp' %}"
-                width="500"
-                height="500"
-                decoding="async"
-                data-nimg="1"
-                class="flag"
-                loading="lazy"
-                style="color: transparent"
-              />
-              <input
-                spellcheck="false"
-                type="text"
-                pattern="\d*"
-                placeholder="+44"
-                autocomplete="off"
-                class="index-input-prefixnumber"
-                value="+33"
-              />
-            </div>
-            <input
-              autofocus=""
-              spellcheck="false"
-              type="text"
-              pattern="\d*"
-              placeholder="Your WhatsApp number"
-              autocomplete="off"
-              class="index-input-phonenumber"
-              style="margin-left: 0px"
-              value=""
-            /> -->
-            <!-- <div class="not-onDesk">
-              <img
-                alt=""
-                src="{% static 'assets/img/call.svg' %}"
-                width="500"
-                height="500"
-                decoding="async"
-                data-nimg="1"
-                class="call-logo"
-                loading="lazy"
-                style="color: transparent"
-              />
-            </div> -->
-            <a href="https://wa.me/15550602177" class="index-button w-100" >
-              
-            <div
-              id="phone-submit-desk"
-              class="submit-button index-button"
-              style="background-color: #000; color: #fff"
-            >
+      <div class="row">
 
-                Get Started for free
+        <!-- Left side columns -->
+        <div class="col-lg-12">
+          <div class="row">
+
+            <!-- Sales Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card sales-card">
+                <a href="/cpa" style="color:black">
+                  <div class="card-body">
+                    <h5 class="card-title">Accounting/CPA</h5>
+                    <div class="d-flex align-items-center">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <img src="{% static 'assets/img/cpa.png' %}" style="width: 100%;" alt="">
+                      </div>
+                      <div class="ps-3">
+                        <p>Get the answers you need instantly from over 100 books on accounting and the latest updates to the IRS code.</p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+
               </div>
-            </a>
-            <!-- <div
-              id="phone-submit-mobile"
-              class="submit-button index-button-mobile"
-              style="background-color: #01eacc; color: #000"
-            >
-              Get Started for free
+            </div><!-- End Sales Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card customers-card">
+                <a href="/legal" style="color:black">
+                  <div class="card-body">
+                    <h5 class="card-title">Legal</h5>
+                    <div class="d-flex align-items-center">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <img src="{% static 'assets/img/legal.png' %}" style="width: 100%;" alt="">
+                      </div>
+                      <div class="ps-3">
+                        <p>Legal AI is built using over 500 legal publications which include readings required from universities, and case studies.</p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card revenue-card">
+                <a href="/hr" style="color: black;">
+                  <div class="card-body">
+                    <h5 class="card-title">Human Resources</h5>
+                    <div class="d-flex align-items-center">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <img src="{% static 'assets/img/hr.png' %}" style="width: 100%;" alt="">
+                      </div>
+                      <div class="ps-3">
+                        <p>Instant access to the questions around Human Resources.  All updated with the latest information from SHRM.</p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Sales Card -->
+            <!-- <div class="col-xxl-4 col-md-6">
+              <div class="card info-card sales-card">
+                <div class="card-body">
+                  <h5 class="card-title">Customers Satisfaction</h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-emoji-smile"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>821+</h6>
+                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
             </div> -->
+            <!-- End Sales Card -->
+
+            <!-- Revenue Card -->
+            <!-- <div class="col-xxl-4 col-md-6">
+              <div class="card info-card revenue-card">
+                <div class="card-body">
+                  <h5 class="card-title">Industries Served</h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="ri-customer-service-2-fill"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>3+</h6>
+                      <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div> -->
+            <!-- End Revenue Card -->
+
+            <!-- Customers Card -->
+            <!-- <div class="col-xxl-4 col-xl-12">
+              <div class="card info-card customers-card">
+                <div class="card-body">
+                  <h5 class="card-title">Learning Resources</h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-book"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>1023+</h6>
+                      <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div> -->
+            <!-- End Customers Card -->
+
+            <!-- Reports -->
+            <!-- <div class="col-12">
+              <div class="card">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Reports <span>/Today</span></h5>
+
+                  <div id="reportsChart"></div>
+
+                  <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                      new ApexCharts(document.querySelector("#reportsChart"), {
+                        series: [{
+                          name: 'Visits',
+                          data: [31, 40, 28, 51, 42, 82, 56],
+                        }, {
+                          name: 'Conversations',
+                          data: [11, 32, 45, 32, 34, 52, 41]
+                        }, {
+                          name: 'Customers',
+                          data: [15, 11, 32, 18, 9, 24, 11]
+                        }],
+                        chart: {
+                          height: 350,
+                          type: 'area',
+                          toolbar: {
+                            show: false
+                          },
+                        },
+                        markers: {
+                          size: 4
+                        },
+                        colors: ['#4154f1', '#2eca6a', '#ff771d'],
+                        fill: {
+                          type: "gradient",
+                          gradient: {
+                            shadeIntensity: 1,
+                            opacityFrom: 0.3,
+                            opacityTo: 0.4,
+                            stops: [0, 90, 100]
+                          }
+                        },
+                        dataLabels: {
+                          enabled: false
+                        },
+                        stroke: {
+                          curve: 'smooth',
+                          width: 2
+                        },
+                        xaxis: {
+                          type: 'datetime',
+                          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+                        },
+                        tooltip: {
+                          x: {
+                            format: 'dd/MM/yy HH:mm'
+                          },
+                        }
+                      }).render();
+                    });
+                  </script>
+
+                </div>
+
+              </div>
+            </div> -->
+            <!-- End Reports -->
+
+            <!-- Recent Sales -->
+            <!-- <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Recent Uploaded Documents <span>| Today</span></h5>
+
+                  <table class="table table-borderless datatable">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Client</th>
+                        <th scope="col">Book Name</th>
+                        <th scope="col">Pages</th>
+                        <th scope="col">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row"><a href="#">#2457</a></th>
+                        <td>Brandon Jacob</td>
+                        <td><a href="#" class="text-primary">At praesentium minu</a></td>
+                        <td>64</td>
+                        <td><span class="badge bg-success">Approved</span></td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a href="#">#2147</a></th>
+                        <td>Bridie Kessler</td>
+                        <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
+                        <td>47</td>
+                        <td><span class="badge bg-warning">Pending</span></td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a href="#">#2049</a></th>
+                        <td>Ashleigh Langosh</td>
+                        <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
+                        <td>147</td>
+                        <td><span class="badge bg-success">Approved</span></td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a href="#">#2644</a></th>
+                        <td>Angus Grady</td>
+                        <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
+                        <td>67</td>
+                        <td><span class="badge bg-danger">Rejected</span></td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a href="#">#2644</a></th>
+                        <td>Raheem Lehner</td>
+                        <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
+                        <td>$165</td>
+                        <td><span class="badge bg-success">Approved</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div> -->
+            <!-- End Recent Sales -->
+
+            <!-- Top Selling -->
+            <!-- <div class="col-12">
+              <div class="card top-selling overflow-auto">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body pb-0">
+                  <h5 class="card-title">Top Visited <span>| Today</span></h5>
+
+                  <table class="table table-borderless">
+                    <thead>
+                      <tr>
+                        <th scope="col">Preview</th>
+                        <th scope="col">Book Name</th>
+                        <th scope="col">Pages</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Revenue</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row"><a href="#"><img src="{% static 'assets/img/product-1.jpg' %}" alt=""></a></th>
+                        <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
+                        <td>$64</td>
+                        <td class="fw-bold">124</td>
+                        <td>$5,828</td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a href="#"><img src="{% static 'assets/img/product-2.jpg' %}" alt=""></a></th>
+                        <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
+                        <td>$46</td>
+                        <td class="fw-bold">98</td>
+                        <td>$4,508</td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a href="#"><img src="{% static 'assets/img/product-3.jpg' %}" alt=""></a></th>
+                        <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
+                        <td>$59</td>
+                        <td class="fw-bold">74</td>
+                        <td>$4,366</td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a href="#"><img src="{% static 'assets/img/product-4.jpg' %}" alt=""></a></th>
+                        <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
+                        <td>$32</td>
+                        <td class="fw-bold">63</td>
+                        <td>$2,016</td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a href="#"><img src="{% static 'assets/img/product-5.jpg' %}" alt=""></a></th>
+                        <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
+                        <td>$79</td>
+                        <td class="fw-bold">41</td>
+                        <td>$3,239</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div> -->
+            <!-- End Top Selling -->
+
           </div>
-        </div>
-        <div class="pricing-description">
-          <span style="font-weight: 600">Free for 3 days</span>
-          , and then
-          <span style="font-weight: 600">$19.99/month. Cancel anytime.</span>
-        </div>
-        <div class="about-div">
-          <div class="mockup-title">
-            Directly on
-            <span
-              style="
-                background-color: #03dbbf;
-                color: #fff;
-                padding-left: 5px;
-                padding-right: 5px;
-                margin-left: 5px;
-              "
-              >Whatsapp</span
-            >
+        </div><!-- End Left side columns -->
+
+        <!-- Right side columns -->
+        <!-- <div class="col-lg-4">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Recent Activity</span></h5>
+
+              <div class="activity">
+                {% for activity in activities %}
+                <div class="activity-item d-flex">
+                  <div class="activite-label">{{activity.created_at}}</div>
+                  {% if activity.type == '1' %}
+                    <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                  {% elif activity.type == '2' %}
+                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                  {% elif activity.type == '3' %}
+                    <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
+                  {% elif activity.type == '4' %}
+                    <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
+                  {% elif activity.type == '5' %}
+                    <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
+                  {% endif %}
+                  <div class="activity-content">
+                     {{activity.activity}}
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
           </div>
-          <div class="mockup-body">
-            <img
-              alt=""
-              src="{% static 'assets/img/phone-mockup.svg' %}"
-              decoding="async"
-              data-nimg="fill"
-              loading="lazy"
-              style="
-                position: absolute;
-                height: 100%;
-                width: 100%;
-                inset: 0px;
-                color: transparent;
-                visibility: visible;
-              "
-              data-xblocker="passed"
-            />
+
+          <div class="card">
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body pb-0">
+              <h5 class="card-title">Budget Report <span>| This Month</span></h5>
+
+              <div id="budgetChart" style="min-height: 400px;" class="echart"></div>
+
+              <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  var budgetChart = echarts.init(document.querySelector("#budgetChart")).setOption({
+                    legend: {
+                      data: ['Allocated Budget', 'Actual Spending']
+                    },
+                    radar: {
+                      // shape: 'circle',
+                      indicator: [{
+                          name: 'Sales',
+                          max: 6500
+                        },
+                        {
+                          name: 'Administration',
+                          max: 16000
+                        },
+                        {
+                          name: 'Information Technology',
+                          max: 30000
+                        },
+                        {
+                          name: 'Customer Support',
+                          max: 38000
+                        },
+                        {
+                          name: 'Development',
+                          max: 52000
+                        },
+                        {
+                          name: 'Marketing',
+                          max: 25000
+                        }
+                      ]
+                    },
+                    series: [{
+                      name: 'Budget vs spending',
+                      type: 'radar',
+                      data: [{
+                          value: [4200, 3000, 20000, 35000, 50000, 18000],
+                          name: 'Allocated Budget'
+                        },
+                        {
+                          value: [5000, 14000, 28000, 26000, 42000, 21000],
+                          name: 'Actual Spending'
+                        }
+                      ]
+                    }]
+                  });
+                });
+              </script>
+
+            </div>
           </div>
-          <div class="mockup-start">Get Started for free</div>
-        </div>
+
+          <div class="card">
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body pb-0">
+              <h5 class="card-title">Website Traffic <span>| Today</span></h5>
+
+              <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
+
+              <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  echarts.init(document.querySelector("#trafficChart")).setOption({
+                    tooltip: {
+                      trigger: 'item'
+                    },
+                    legend: {
+                      top: '5%',
+                      left: 'center'
+                    },
+                    series: [{
+                      name: 'Access From',
+                      type: 'pie',
+                      radius: ['40%', '70%'],
+                      avoidLabelOverlap: false,
+                      label: {
+                        show: false,
+                        position: 'center'
+                      },
+                      emphasis: {
+                        label: {
+                          show: true,
+                          fontSize: '18',
+                          fontWeight: 'bold'
+                        }
+                      },
+                      labelLine: {
+                        show: false
+                      },
+                      data: [{
+                          value: 1048,
+                          name: 'Search Engine'
+                        },
+                        {
+                          value: 735,
+                          name: 'Direct'
+                        },
+                        {
+                          value: 580,
+                          name: 'Email'
+                        },
+                        {
+                          value: 484,
+                          name: 'Union Ads'
+                        },
+                        {
+                          value: 300,
+                          name: 'Video Ads'
+                        }
+                      ]
+                    }]
+                  });
+                });
+              </script>
+
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body pb-0">
+              <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
+
+              <div class="news">
+                <div class="post-item clearfix">
+                  <img src="{% static 'assets/img/news-1.jpg' %}" alt="">
+                  <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
+                  <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="{% static 'assets/img/news-2.jpg' %}" alt="">
+                  <h4><a href="#">Quidem autem et impedit</a></h4>
+                  <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="{% static 'assets/img/news-3.jpg' %}" alt="">
+                  <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
+                  <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="{% static 'assets/img/news-4.jpg' %}" alt="">
+                  <h4><a href="#">Laborum corporis quo dara net para</a></h4>
+                  <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="{% static 'assets/img/news-5.jpg' %}" alt="">
+                  <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
+                  <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
       </div>
     </section>
-    <!-- End Hero -->
+    <div id="chat-circle" class="btn btn-raised">
+      <div id="chat-overlay"></div>
+      <i class="bi bi-question-circle"></i><span style='padding-left:6px'>Support</span>
+</div>
 
-    <main id="main">
-      <div class="index-sep1"></div>
-
-      <section class="second-section">
-        <div class="center-block-child">
-          <div class="index-title">
-            Transform your
-            <br class="not-onMobile" />
-            health with byvoice's
-            <br class="not-onMobile" />
-            personalized
-            <span style="background-color: #03dbbf; color: white">advice.</span>
-            <br />
-            <br />
-            <span style="background-color: yellow">Keep track</span> of your
-            progress and ask all your
-            <br class="not-onMobile" />
-            questions easily.
-          </div>
-          <div>
-            <div class="index-users">
-              <div>
-                <div class="index-user index-user-selected">
-                  <img
-                    src="{% static 'assets/img/testimonial1.webp' %}"
-                    alt=""
-                    style="
-                      position: absolute;
-                      height: 100%;
-                      width: 100%;
-                      left: 0;
-                      top: 0;
-                      right: 0;
-                      bottom: 0;
-                      color: transparent;
-                    "
-                  />
-                </div>
-                <div class="index-triangle"></div>
-              </div>
-              <div>
-                <div class="index-user">
-                  <img
-                    src="{% static 'assets/img/testimonial1.webp' %}"
-                    alt=""
-                    style="
-                      position: absolute;
-                      height: 100%;
-                      width: 100%;
-                      left: 0;
-                      top: 0;
-                      right: 0;
-                      bottom: 0;
-                      color: transparent;
-                    "
-                  />
-                </div>
-                <div class="index-triangle"></div>
-              </div>
-              <div>
-                <div class="index-user">
-                  <img
-                    src="{% static 'assets/img/testimonial1.webp' %}"
-                    alt=""
-                    style="
-                      position: absolute;
-                      height: 100%;
-                      width: 100%;
-                      left: 0;
-                      top: 0;
-                      right: 0;
-                      bottom: 0;
-                      color: transparent;
-                    "
-                  />
-                </div>
-                <div class="index-triangle"></div>
-              </div>
-              <div>
-                <div class="index-user">
-                  <img
-                    src="{% static 'assets/img/testimonial1.webp' %}"
-                    alt=""
-                    style="
-                      position: absolute;
-                      height: 100%;
-                      width: 100%;
-                      left: 0;
-                      top: 0;
-                      right: 0;
-                      bottom: 0;
-                      color: transparent;
-                    "
-                  />
-                </div>
-                <div class="index-triangle"></div>
-              </div>
-            </div>
-            <div class="index-citation">
-              <div class="citation-title">It's so cool!</div>
-              <div>
-                “As a busy working woman, I struggle to find time for myself,
-                let alone time to meal plan and eat healthy. Leeg has been
-                a lifesaver change (since 3 weeks I use it aha).
-                <br />
-                <br />
-                The personalized nutrition plan has been easy to follow and the
-                progress tracking feature has kept me motivated. I feel amazing
-                and I owe it all to Leeg!”
-              </div>
-            </div>
-            <div>
-              <img
-                alt=""
-                src="{% static 'assets/img/pink_star.svg' %}"
-                width="20"
-                height="18"
-                decoding="async"
-                data-nimg="1"
-                class="index-star"
-                loading="lazy"
-                style="color: transparent"
-              />
-              <img
-                alt=""
-                src="{% static 'assets/img/pink_star.svg' %}"
-                width="20"
-                height="18"
-                decoding="async"
-                data-nimg="1"
-                class="index-star"
-                loading="lazy"
-                style="color: transparent"
-              />
-              <img
-                alt=""
-                src="{% static 'assets/img/pink_star.svg' %}"
-                width="20"
-                height="18"
-                decoding="async"
-                data-nimg="1"
-                class="index-star"
-                loading="lazy"
-                style="color: transparent"
-              />
-              <img
-                alt=""
-                src="{% static 'assets/img/pink_star.svg' %}"
-                width="20"
-                height="18"
-                decoding="async"
-                data-nimg="1"
-                class="index-star"
-                loading="lazy"
-                style="color: transparent"
-              />
-              <img
-                alt=""
-                src="{% static 'assets/img/pink_star.svg' %}"
-                width="20"
-                height="18"
-                decoding="async"
-                data-nimg="1"
-                class="index-star"
-                loading="lazy"
-                style="color: transparent"
-              />
-            </div>
-            <div class="index-name">Alexandra, UK.</div>
-          </div>
-        </div>
-      </section>
-      <div style="height: 100px"></div>
-      <section class="center-block-small-container">
-        <div class="center-block-small">
-          <div class="index-centered">
-            <div class="index-icon-sign">
-              <img
-                alt=""
-                src="{% static 'assets/img/iconSign.svg' %}"
-                decoding="async"
-                data-nimg="fill"
-                class="index-icon-sign"
-                loading="lazy"
-                style="
-                  position: absolute;
-                  height: 100%;
-                  width: 100%;
-                  left: 0;
-                  top: 0;
-                  right: 0;
-                  bottom: 0;
-                  color: transparent;
-                "
-              />
-            </div>
-            <div class="index-trusted">Trusted by hundreds of</div>
-            <div class="index-nicheName">
-              <!-- <span class="sparkling"> Coaches </span> -->
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="index-sep3"></div>
-
-      <section class="full-width-block">
-        <div class="full-width-block-child">
-          <div class="index-big-title">
-            Nutrit🍌on
-            <br />
-            made personal,
-            <br />
-            <span style="color: yellow">just for you</span>
-          </div>
-          <div class="index-small-title">
-            The AI-powered Leeg assistant provides customized advice
-            <br class="not-onMobile" />
-            based on the user's goals and dietary needs.
-          </div>
-          <div style="height: 220px"></div>
-          <div class="index-big-title">
-            Sm🍑oth
-            <br />
-            tracking of
-            <br />
-            <span style="color: #ff9898">your progress</span>
-          </div>
-          <div class="index-small-title">
-            Leeg helps users track their food intake, monitor their
-            <br class="not-onMobile" />
-            progress, and make informed food choices.
-          </div>
-          <div style="height: 220px"></div>
-          <div class="index-big-title">
-            Your expert
-            <br />
-            support f🍎r
-            <br />
-            <span style="color: #fd3556">nutrition</span>
-          </div>
-          <div class="index-small-title">
-            Leeg provides reliable, evidence-based information
-            <br class="not-onMobile" />
-            on nutrition and healthy eating, answering any
-            <br class="not-onMobile" />
-            questions the user may have.
-          </div>
-          <div style="height: 200px"></div>
-          <div class="index-features">
-            <div class="index-features-12">
-              <div class="index-feature-sj index-feature-1">
-                <div class="index-emoji">👋</div>
-                <div class="index-title-feature">Available on WhatsApp.</div>
-                <div class="index-desc-feature">
-                  The assistant is accessible through the most popular and
-                  convenient messaging platform, making it easy to use
-                  on-the-go.
-                </div>
-              </div>
-              <div class="index-delimiter-feature"></div>
-              <div class="index-feature-sj index-feature-2">
-                <div class="index-emoji">🔭</div>
-                <div class="index-title-feature">Continuous improvement.</div>
-                <div class="index-desc-feature">
-                  The AI technology behind Leeg is constantly learning and
-                  improving, providing you with the latest and most accurate
-                  information.
-                </div>
-              </div>
-            </div>
-            <div style="height: 25px"></div>
-            <div class="index-feature-sj index-feature-3">
-              <div>
-                <div class="index-emoji">🏆</div>
-                <div class="index-title-feature">Healthy Eats Fun.</div>
-                <div class="index-desc-feature">
-                  The assistant uses fun and interactive elements to keep you
-                  motivated and engaged, making healthy eating a more enjoyable
-                  experience.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div style="height: 180px"></div>
-
-      <section
-        id="pricing"
-        class="center-block-container index-pricing-section"
-      >
-        <div class="center-block-child">
-          <div class="index-pricingLabel">Pricing.</div>
-          <div class="index-pricing">
-            $19.99
-            <span style="font-size: 45px">/mo.</span>
-          </div>
-          <div class="index-free-trial">3-Day free trial</div>
-          <!-- <div class="index-row-input">
-            <div class="index-prefix">
-              <img
-                alt=""
-                srcset="{% static 'assets/img/france.webp' %}"
-                src="{% static 'assets/img/france.webp' %}"
-                width="500"
-                height="500"
-                decoding="async"
-                data-nimg="1"
-                class="flag"
-                loading="lazy"
-                style="color: transparent"
-              />
-              <input
-                spellcheck="false"
-                type="text"
-                pattern="\d*"
-                placeholder="+44"
-                autocomplete="off"
-                class="index-input-prefixnumber"
-                value="+33"
-              />
-            </div>
-            <input
-              spellcheck="false"
-              type="text"
-              pattern="\d*"
-              placeholder="Your WhatsApp number"
-              autocomplete="off"
-              class="index-input-phonenumber"
-              style="margin-left: 0px"
-              value=""
-            />
-            <img
-              alt=""
-              src="{% static 'assets/img/call.svg' %}"
-              width="500"
-              height="500"
-              decoding="async"
-              data-nimg="1"
-              class="call-logo"wa
-              loading="lazy"
-              style="color: transparent"
-            />
-          </div> -->
-          <br class="index-sep3"></br>
-            <div
-              class="index-getStartedbutton"
-              style="background-color: #01eacc; color: #000"
-            >
-              Purchase
-            </div>
-          <div class="pricing-description">
-            <span style="font-weight: 600">Free for 3 days</span>
-            , and then
-            <span style="font-weight: 600">$19.99/month. Cancel anytime.</span>
-          </div>
-          <div class="index-plus">+</div>
-          <div class="index-bonus-container sparkling">
-            <img
-              alt=""
-              src="/static/assets/img/freetrial.svg"
-              decoding="async"
-              data-nimg="fill"
-              loading="lazy"
-            />
-          </div>
-          <div class="unlock-title">
-            Unlock Leeg's Secrets - Get the 2000 Best Questions!
-          </div>
-          <div class="unlock-description">
-            Unlock the key to nutritional success with Leeg. Subscribe now
-            and receive these secrets sending BONUS to our Leeg account on
-            WhatsApp. Get started on your healthy eating journey today!
-          </div>
-        </div>
-      </section>
-      <div class="index-sep6"></div>
-
-      <section id="faq" class="center-block-container index-faq">
-        <div class="center-block-child">
-          <div class="index-title">
-            Frequently<!-- --><br />asked questions.<!-- -->
-          </div>
-          <div class="">
-            <div class="question">What is Leeg?</div>
-            <div class="answer">
-              Leeg is a
-              <span style="font-weight: 600">personal nutrition assistant</span>
-              powered by AI, accessible through WhatsApp.
-            </div>
-            <div class="question-line"></div>
-          </div>
-          <div class="">
-            <div class="question">How can I get started with Leeg?</div>
-            <div class="question-line"></div>
-          </div>
-          <div class="">
-            <div class="question">How does Leeg work?</div>
-            <div class="question-line"></div>
-          </div>
-          <div class="">
-            <div class="question">Can Leeg be used on any device?</div>
-            <div class="question-line"></div>
-          </div>
-          <div class="">
-            <div class="question">
-              How accurate is the information provided by Leeg?
-            </div>
-            <div class="question-line"></div>
-          </div>
-          <div class="">
-            <div class="question">Is Leeg only for weight loss?</div>
-            <div class="question-line"></div>
-          </div>
-          <div class="">
-            <div class="question">
-              Can Leeg be used by people with dietary restrictions?
-            </div>
-            <div class="question-line"></div>
-          </div>
-          <div class="">
-            <div class="question">
-              How long does it take to see results with Leeg?
-            </div>
-            <div class="question-line"></div>
-          </div>
-          <div class="">
-            <div class="question">Is my information secure with Leeg?</div>
-            <div class="question-line"></div>
-          </div>
-          <div class="">
-            <div class="question">
-              Is my personal information anonymous with Leeg?
-            </div>
-            <div class="question-line"></div>
-          </div>
-          <div class="">
-            <div class="question">How do I unsubscribe from Leeg?</div>
-            <div class="question-line"></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="full-width-block">
-        <div class="full-width-block-child">
-          <div class="index-big-title">
-            Leeg:
-            <br />
-            Eat Smart.
-          </div>
-          <span id="yellow-sparkling">
-            <button href="#pricing" class="index-cta-button" onclick='location.href="#pricing"'>
-              Get Started for free
-            </button>
-          </span>
-        </div>
-      </section>
-    </main>
-    <!-- End #main -->
-
-    <div class="footer-container">
-      <div class="footer-row">
-        <div>
-          <div class="footer-logo-block">
-            <div class="footer-logo">
-              <img src="{% static 'assets/img/logoWhite.svg' %}" alt="" />
-            </div>
-            <div class="logo-name pl-3">Leeg</div>
-          </div>
-          <div class="footer-info">
-            Leeg is a personal nutrition assistant powered by AI,
-            accessible through WhatsApp.
-          </div>
-        </div>
-        <div class="footer-address">
-          <div class="footer-section-title">Resources</div>
-          <div class="footer-usefullinks" onclick='location.href="#pricing"' >Get started for free</div>
-          <div class="footer-usefullinks" onclick='location.href="#pricing"'>Pricing</div>
-          <div class="footer-usefullinks" onclick='location.href="#faq"'>FAQ</div>
-        </div>
-
-        <div>
-          <div class="footer-section-title">Company</div>
-          <div class="footer-usefullinks">Privacy policy</div>
-          <div class="footer-usefullinks">Terms of service</div>
-        </div>
-        <div>
-          <div class="footer-section-title">Contact us</div>
-          <div class="footer-contact">Location: France</div>
-          <div class="footer-contact">Email: jeremy@leadfy.fr</div>
-          <div class="footer-contact">Call: ??</div>
-        </div>
-      </div>
-      <div class="footer-copyright">
-        Copyright © 2023 Leeg - All Rights Reserved
-      </div>
+<div class="chat-box">
+  <div class="chat-box-header">
+    ChatBot
+    <span class="chat-box-toggle"><i class="bi bi-x"></i></span>
+  </div>
+  <div class="chat-box-body">
+    <div class="chat-box-overlay">   
     </div>
+    <div class="chat-logs">
+     
+    </div><!--chat-log -->
+  </div>
+  <div class="chat-input">      
+    <form>
+      {% csrf_token %}
+      <input type="text" id="chat-input" placeholder="Send a message..."/>
+    <button type="submit" class="chat-submit" id="chat-submit"><i class="ri ri-send-plane-fill"></i></button>
+    </form>      
+  </div>
+</div>
 
-    <div id="preloader"></div>
-    <a
-      href="#"
-      class="back-to-top d-flex align-items-center justify-content-center"
-      ><i class="bi bi-arrow-up-short"></i
-    ></a>
-
-    <!-- Vendor JS Files -->
-    <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
-    <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
-    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
-    <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
-    <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
-    <script src="{% static 'assets/vendor/typed.js/typed.min.js' %}"></script>
-    <script src="{% static 'assets/vendor/waypoints/noframework.waypoints.js' %}"></script>
-    <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
-
-    <!-- Template Main JS File -->
-    <script src="{% static 'assets/js/main.js' %}"></script>
-    <script src="{% static 'assets/js/jquery-3.5.1.min.js' %}"></script>
-    <script
-      src="https://unpkg.com/webkul-micron@1.1.6/dist/script/micron.min.js"
-      type="text/javascript"
-    ></script>
-    <!-- <script>
-      $("#phone-submit-desk").click(() => {
-        alert("hi");
-        console.log("hello");
-      });
-
-      $("#phone-submit-mobile").click(function () {
-        $("#phone-input").attr({ "datra-micron": "tada" });
-      });
-    </script> -->
-    <script>
-      function initSparkling() {
-        // settings
-        const black = "#000000";
-        const yellow = "#ffff1a";
-        const svgPath =
-          "M26.5 25.5C19.0043 33.3697 0 34 0 34C0 34 19.1013 35.3684 26.5 43.5C33.234 50.901 34 68 34 68C34 68 36.9884 50.7065 44.5 43.5C51.6431 36.647 68 34 68 34C68 34 51.6947 32.0939 44.5 25.5C36.5605 18.2235 34 0 34 0C34 0 33.6591 17.9837 26.5 25.5Z";
-
-        // sparkling effect
-        let sparkling = function () {
-          $(".sparkling").each(function () {
-            let sparklingElement = $(this);
-            let stars = sparklingElement.find(".star");
-
-            // remove the first star when more than 6 stars existing
-            if (stars.length > 5) {
-              stars.each(function (index) {
-                if (index === 0) {
-                  $(this).remove();
-                }
-              });
-            }
-            // add a new star
-            sparklingElement.append(addBlackStar());
-          });
-          $("#yellow-sparkling").each(function () {
-            let sparklingElement = $(this);
-            let stars = sparklingElement.find(".star");
-
-            // remove the first star when more than 6 stars existing
-            if (stars.length > 5) {
-              stars.each(function (index) {
-                if (index === 0) {
-                  $(this).remove();
-                }
-              });
-            }
-            // add a new star
-            sparklingElement.append(addYellowStar());
-          });
-
-          let rand = Math.round(Math.random() * 300) + 50;
-          setTimeout(sparkling, rand);
-        };
-
-        // star
-        let addBlackStar = function () {
-          let size = Math.floor(Math.random() * 20) + 5;
-          let top = Math.floor(Math.random() * 100);
-          let left = Math.floor(Math.random() * 100);
-
-          return (
-            '<span class="star" style="top:' +
-            top +
-            "%; left:" +
-            left +
-            '%;">' +
-            '<svg width="' +
-            size +
-            '" height="' +
-            size +
-            '" viewBox="0 0 68 68" fill="none">' +
-            '<path d="' +
-            svgPath +
-            '" fill="' +
-            black +
-            '" /></svg></span>'
-          );
-        };
-        let addYellowStar = function () {
-          let size = Math.floor(Math.random() * 20) + 15;
-          let top = Math.floor(Math.random() * 100) - 10;
-          let left = Math.floor(Math.random() * 100);
-
-          return (
-            '<span class="star" style="top:' +
-            top +
-            "%; left:" +
-            left +
-            '%;">' +
-            '<svg width="' +
-            size +
-            '" height="' +
-            size +
-            '" viewBox="0 0 68 68" fill="none">' +
-            '<path d="' +
-            svgPath +
-            '" fill="' +
-            yellow +
-            '" /></svg></span>'
-          );
-        };
-
-        let list = ["Coaches", "Plant lovers", "Customers", "Dietitians"];
-        var i = 0;
-        let changing = function () {
-          $(".index-nicheName").html(
-            '<span class="sparkling">' + list[i] + "</span>"
-          );
-          setTimeout(changing, 1500);
-          i++;
-          if (i == 4) {
-            i = 0;
+  </main><!-- End #main -->
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+  integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script>
+    $(function() {
+      var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+      var INDEX = 0; 
+      $("#chat-submit").click(function(e) {
+        e.preventDefault();
+        var msg = $("#chat-input").val(); 
+        if(msg.trim() == ''){
+          return false;
+        }
+        generate_message(msg, 'self');
+        
+        $.ajax({
+          type: "POST",
+          url: "/chat",
+          {% comment %} headers: {
+            "X-CSRFToken": csrftoken
+          }, {% endcomment %}
+          data: { 'category': 'CPA', 'history': 'second chat', 'prompt': msg },
+          success: function (res) {
+            generate_message(res, 'user');  
           }
-        };
-        // execute
-        changing();
-        sparkling();
-      }
+        });
 
-      $(function () {
-        // init sparkling stars
-        initSparkling();
-      });
-    </script>
-  </body>
-</html>
+      })
+      
+      function generate_message(msg, type) {
+        INDEX++;
+        var str="";
+        str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg "+type+"\">";
+        str += "          <span class=\"msg-avatar\">";
+        str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
+        str += "          <\/span>";
+        str += "          <div class=\"cm-msg-text\">";
+        str += msg;
+        str += "          <\/div>";
+        str += "        <\/div>";
+        $(".chat-logs").append(str);
+        $("#cm-msg-"+INDEX).hide().fadeIn(300);
+        if(type == 'self'){
+         $("#chat-input").val(''); 
+        }    
+        $(".chat-logs").stop().animate({ scrollTop: $(".chat-logs")[0].scrollHeight}, 1000);    
+      }  
+      
+      $("#chat-circle").click(function() {    
+        $("#chat-circle").toggle('scale');
+        $(".chat-box").toggle('scale');
+      })
+      
+      $(".chat-box-toggle").click(function() {
+        $("#chat-circle").toggle('scale');
+        $(".chat-box").toggle('scale');
+      })
+      
+    })
+  </script>
+{% endblock %}

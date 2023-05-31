@@ -1,0 +1,360 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>HR AI Assistant</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item">AI Assistant</li>
+        <li class="breadcrumb-item active">HR</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="card" style="height: 77vh; padding: 10px 20px;">
+          <h5 id="chat-title" class="card-title">No History</h5>
+          <div class="card-body space">
+            <ul id="chat-history" class="list-group">
+            </ul>
+            <br>
+            <div class="col-sm-12 text-center">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new_modal">
+                New
+              </button>
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete_modal">
+                Delete
+              </button>
+            </div>
+            <div class="modal fade" id="new_modal" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Start New Chat</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">Chat Name</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="history_input" required>
+                        </div>
+                      </div>
+                      <div class="text-center">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button id="create_history" type="submit" class="btn btn-primary"
+                          data-bs-dismiss="modal">Start</button>
+                      </div>
+                    </form><!-- End Horizontal Form -->
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Vertically centered Modal-->
+            <div class="modal fade" id="delete_modal" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Confirm Deletion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Are you sure you want to delete this item?
+                    This action cannot be undone.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button id="delete_history" type="button" class="btn btn-primary"
+                      data-bs-dismiss="modal">Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Vertically centered Modal-->
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-9">
+        <div class="card" style="height: 77vh; padding: 20px 20px;">
+          <div class="card-body space" styp>
+            {% csrf_token %}
+            <div id="list-group" class="list-group w-auto"
+              style="overflow-y: auto; height: 65vh; border-style: groove;">
+              {% for chat in chats %}
+              <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3">
+                <img src="{% static 'assets/img/user.jfif' %}" alt="twbs" width="32" height="32"
+                  class="rounded-circle flex-shrink-0">
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                  <div>
+                    <p class="mb-0 opacity-95">{{chat.message}}</p>
+                  </div>
+                </div>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3">
+                <img src="{% static 'assets/img/bot.png' %}" alt="twbs" width="32" height="32"
+                  class="rounded-circle flex-shrink-0">
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                  <div>
+                    <p class="mb-0 opacity-95">{{chat.response}}</p>
+                  </div>
+                </div>
+              </a>
+              {% endfor %}
+            </div>
+
+            <div class="row" style="margin-top: 10px;">
+              <!-- <input type="text" class="form-control" id="chat-input"> -->
+              <div class="col-sm-11">
+                <!-- <textarea rows="3" type="text" class="form-control" id="chat-input" style="resize: none;"></textarea> -->
+                <input id="chat-input" type="text" class="form-control">
+              </div>
+              <div class="col-sm-1 text-center">
+                <button id="gpt-button" class="btn btn-primary">ASK</button>
+              </div>
+            </div>
+            <!-- </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+  integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> -->
+<script>
+
+  var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+
+  function historyClick(history) {
+    get_chat(history)
+  }
+
+  function message_click(msg) {
+    $('#chat-input').val(msg);
+  }
+
+  function get_chat(history) {
+    $('#chat-title').text(history)
+    $.ajax({
+      type: "POST",
+      url: "/get_chat",
+      headers: {
+        "X-CSRFToken": csrftoken
+      },
+      data: { 'category': 'HR', 'history': history },
+      success: function (data) {
+        chat_data = ``
+        for (i = 1; i <= data.length; i++) {
+          chat_data += `
+            <a href="#" onclick="message_click('${data[i - 1][0]}')" class="list-group-item list-group-item-action d-flex gap-3 py-3" style="background-color:#e6e6e6">
+              <img src="{% static 'assets/img/user.jfif' %}" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+              <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                  <p class="mb-0 opacity-95">${data[i - 1][0]}</p>
+                </div>
+              </div>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3">
+                <img src="{% static 'assets/img/bot.png' %}" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                <p class="mb-0 opacity-85">${data[i - 1][1]}</p>
+                </div>
+              </div>
+            </a>
+            `;
+        }
+        $("#list-group").html(chat_data);
+        $('#list-group').scrollTop($("#list-group")[0].scrollHeight);
+      }
+    });
+  }
+
+  function chat(history, question) {
+    $.ajax({
+      type: "POST",
+      url: "/chat",
+      headers: {
+        "X-CSRFToken": csrftoken
+      },
+      data: { 'category': 'HR', 'history': history, 'prompt': question },
+      success: function (res) {
+        let gpt_data = '';
+        gpt_data += `
+              <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3">
+                <img src="{% static 'assets/img/bot.png' %}" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                <p class="mb-0 opacity-85">${res}</p>
+                </div>
+              </div>
+              </a>
+              `;
+        $("#list-group").append(gpt_data);
+        $('#list-group').scrollTop($("#list-group")[0].scrollHeight);
+      }
+    });
+  }
+
+  $(document).ready(function () {
+
+    // history initializer
+
+    $.ajax({
+      type: "POST",
+      url: "/get_history",
+      headers: {
+        "X-CSRFToken": csrftoken
+      },
+      data: { 'category': "HR" },
+      success: function (data) {
+        var history_data = ""
+        for (let i = 1; i <= data.length; i++) {
+          console.log(data[i - 1])
+          history_data += `
+                <button onclick="historyClick('${data[i - 1]}')"  type="button" class="list-group-item list-group-item-action " aria-current="true">
+                  ${data[i - 1]}
+                </button>
+                `
+        }
+        $('#chat-history').html(history_data);
+
+        // chat initializer
+        if (data.length > 0) {
+          var init_history = data[0]
+          $('#chat-title').text(init_history)
+          get_chat(init_history);
+        }
+      }
+    });
+
+
+    $("#chat-input").keypress(function (e) {
+      if (e.keyCode === 13) {
+        // console.log("pressed")
+        var history = $('#chat-title').text();
+        var question = $("#chat-input").val();
+        let html_data = '';
+        html_data += `
+        <a href="#" onclick="message_click('${question}')" class="list-group-item list-group-item-action d-flex gap-3 py-3" style="background-color:#e6e6e6">
+          <img src="{% static 'assets/img/user.jfif' %}" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+          <div class="d-flex gap-2 w-100 justify-content-between">
+            <div>
+              <p class="mb-0 opacity-95">${question}</p>
+            </div>
+          </div>
+        </a>
+        `;
+        $("#chat-input").val('');
+        var listgroup = $("#list-group");
+        listgroup.append(html_data);
+        listgroup.scrollTop($("#list-group")[0].scrollHeight);
+
+        chat(history, question)
+      }
+    })
+
+    $("#gpt-button").click(function () {
+      var history = $('#chat-title').text();
+      console.log("history is: ", history)
+      var question = $("#chat-input").val();
+      let html_data = '';
+      html_data += `
+        <a href="#" onclick="message_click('${question}')" class="list-group-item list-group-item-action d-flex gap-3 py-3" style="background-color:#e6e6e6">
+          <img src="{% static 'assets/img/user.jfif' %}" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+          <div class="d-flex gap-2 w-100 justify-content-between">
+            <div>
+              <p class="mb-0 opacity-95">${question}</p>
+            </div>
+          </div>
+        </a>
+        `;
+      $("#chat-input").val('');
+      var listgroup = $("#list-group");
+      listgroup.append(html_data);
+      listgroup.scrollTop($("#list-group")[0].scrollHeight);
+      chat(history, question)
+    });
+
+    $('#create_history').click(function (e) {
+      e.preventDefault();
+      var history = $('#history_input').val()
+      $.ajax({
+        type: "POST",
+        url: "/create_history",
+        headers: {
+          "X-CSRFToken": csrftoken
+        },
+        data: { 'category': 'HR', 'history': history },
+        success: function (data) {
+          console.log(data)
+          var history_element = `
+                <button onclick="historyClick('${history}')"type="button" class="list-group-item list-group-item-action " aria-current="true">
+                  ${history}
+                </button>
+                `
+          $('#chat-history').prepend(history_element);
+          $('#chat-title').text(history)
+          get_chat(history)
+        }
+      });
+    })
+
+    // delete history
+    $('#delete_history').click(function (e) {
+      var history = $('#chat-title').text()
+      console.log(history)
+      $.ajax({
+        type: "POST",
+        url: "/delete_history",
+        headers: {
+          "X-CSRFToken": csrftoken
+        },
+        data: { 'category': 'HR', 'history': history },
+        success: function (data) {
+          $.ajax({
+            type: "POST",
+            url: "/get_history",
+            headers: {
+              "X-CSRFToken": csrftoken
+            },
+            data: { 'category': "HR" },
+            success: function (data) {
+              var history_data = ""
+              for (let i = 1; i <= data.length; i++) {
+                console.log(data[i - 1])
+                history_data += `
+                <button onclick="historyClick('${data[i - 1]}')"  type="button" class="list-group-item list-group-item-action " aria-current="true">
+                  ${data[i - 1]}
+                </button>
+                `
+              }
+              $('#chat-history').html(history_data);
+              // chat initializer
+              if (data.length > 0) {
+                var init_history = data[0]
+                $('#chat-title').text(init_history)
+                get_chat(init_history);
+              }
+              else {
+                $('#chat-title').text("No History")
+                $("#list-group").empty()
+              }
+            }
+          });
+        }
+      });
+    })
+
+  });
+</script>
+{% endblock %}

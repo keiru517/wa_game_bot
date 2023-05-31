@@ -851,4 +851,4 @@ def remove_admin(game_id, phone_number):
     admin = AdminUser.objects.filter(game=game_id, phone_number=phone_number)
     admin.delete()
 
-    pass
+
