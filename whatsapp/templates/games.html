@@ -24,54 +24,65 @@
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title">Games</h5>
-                  <!-- <p>You can find and read any industy-specific documentations and resources here.</p>
-                  <div class="col-md-2 col-lg-2">
-                    <div class="form-floating mb-3">
-                      <select class="form-select" id="floatingSelect" aria-label="Category">
-                        <option selected="">Accounting/CPA</option>
-                        <option value="1">Human Resources</option>
-                        <option value="2">Legal</option>
+                  <div class="row">
+                    <div class="col-sm-6 col-md-3 mb-2">
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected="">All</option>
+                        <option value="1">My Games</option>
+                        <option value="2">Upcoming Games</option>
+                        <option value="2">Expired Games</option>
                       </select>
-                      <label for="floatingSelect">Category</label>
-                    </div>
-                  </div> -->
+                    </div> 
+
+                  </div>
                   <hr>
-                  <!-- Table with stripped rows -->
-                  <table class="table datatable">
+
+                  <table class="table table-striped">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">GameID</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Start Date</th>
+                        <th scope="col">User Name</th>
+                        <th scope="col">Phone Number</th>
                         <th scope="col">Status</th>
-                        {% if request.user.is_staff %}
-                          <th scope="col">Action</th>
-                        {% endif %}
+                        <th scope="col">Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {% for client in clients %}
                       <tr>
-                        <th scope="row">{{forloop.counter}}</th>
-                        <td>{{client.username}}</td>
-                        <td>{{client.email}}</td>
-                        <td>{{client.date_joined}}</td>
-                        {% if client.is_active %}
-                          <td><span class="badge bg-success">Active</span></td>
-                        {% else %}
-                          <td><span class="badge bg-danger">Rejected</span></td>
-                        {% endif %}
-                        {% if request.user.is_staff %}
-                        <td>
-                          <a href="#" class="btn btn-warning btn-sm" title="Remove my profile image"><i
-                              class="bi bi-box-arrow-in-left"></i></a>
-                          <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                            title="Remove my profile image"><i class="bi bi-box-arrow-right"></i></a>
-                        </td>
-                        {% endif %}
+                        <th scope="row">1</th>
+                        <td>Brandon Jacob</td>
+                        <td>380735889188</td>
+                        <td><span class="badge bg-success">Playerlist</span></td>
+                        <td>2016-05-25</td>
                       </tr>
-                      {% endfor %}
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Bridie Kessler</td>
+                        <td>380735889112</td>
+                        <td><span class="badge bg-warning">Waitlist</span></td>
+                        <td>2014-12-05</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Ashleigh Langosh</td>
+                        <td>380735889144</td>
+                        <td><span class="badge bg-secondary">Outlist</span></td>
+                        <td>2011-08-12</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">4</th>
+                        <td>Angus Grady</td>
+                        <td>380735889133</td>
+                        <td><span class="badge bg-success">Playerlist</span></td>
+                        <td>2012-06-11</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">5</th>
+                        <td>Raheem Lehner</td>
+                        <td>380735889113</td>
+                        <td><span class="badge bg-danger">Blocked</span></td>
+                        <td>2011-04-19</td>
+                      </tr>
                     </tbody>
                   </table>
                   <!-- End Table with stripped rows -->
