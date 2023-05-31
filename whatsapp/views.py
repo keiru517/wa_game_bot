@@ -11,13 +11,70 @@ from django.views.decorators.http import require_POST
 from twilio.twiml.messaging_response import MessagingResponse
 from datetime import datetime
 from .bot_util import *
+from django.contrib.auth import logout, login, authenticate
+from django.contrib.auth import get_user_model
+from django.shortcuts import render, redirect
 
 
+User = get_user_model()
 
 def index(request):
     return render(request, 'index.html')
 
+def login_view(request):
+    error_message = ""
+    if request.method == 'POST':
+        username = request.POST.get('email')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
+        if user:
+            login(request, user)
+            # replace home with your app's home page url
+            return redirect('/', {'username': username})
+        else:
+            error_message = "Invalid username or password"
 
+    return render(request, 'login.html', {'error_message': error_message})
+
+
+def register_view(request):
+    return render(request, 'register.html')
+
+
+def register(request):
+    # if request.method == 'POST':
+    #     first_name = request.POST.get('firstname')
+    #     last_name = request.POST.get('lastname')
+    #     email = request.POST.get('email')
+    #     password = request.POST.get('password')
+    #     user = User.objects.create_user(
+    #         first_name = first_name, last_name = last_name,
+    #         username=email, password=password, email=email, is_staff=False)
+    #     try:
+    #         user.save()
+    #         user = authenticate(username=email, password=password)
+    #         if user is not None:
+    #             login(request, user)
+    #             return redirect('/', {'username': email})
+    #     except:
+    #         return render(request, 'register.html', {'error_message':'Error occurred!'})
+    return render(request, 'register.html')
+
+
+def sign_out(request):
+    logout(request)
+    return redirect('/login')
+
+
+# @login_required
+def games(request):
+    clients = User.objects.all()
+    return render(request, 'games.html', {'clients': clients})
+
+
+# @login_required
+def players(request):
+    return render(request, 'players.html')
 
 def validate_twilio_request(f):
     """Validates that incoming requests genuinely originated from Twilio"""
