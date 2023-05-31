@@ -194,11 +194,12 @@ def incoming_message(request):
                     waitlist_name, waitlist_number = check_waitlist(game_id)
                     # if there is a play in the waitlist
                     if len(waitlist_number) > 0:
-                        message = client.messages.create(
-                            from_=f'whatsapp:{twilio_number}',
-                            body=ADD_PLAYERLIST_FROM_WAITLIST_MESSAGE.format(game_id, location, start_date, start_time, min_players, max_players, game_id),
-                            to=f'whatsapp:{waitlist_number}'
-                        )
+                        # message = client.messages.create(
+                        #     from_=f'whatsapp:{twilio_number}',
+                        #     body=ADD_PLAYERLIST_FROM_WAITLIST_MESSAGE.format(game_id, location, start_date, start_time, min_players, max_players, game_id),
+                        #     to=f'whatsapp:{waitlist_number}'
+                        # )
+                        notify_message(ADD_PLAYERLIST_FROM_WAITLIST_MESSAGE.format(game_id, location, start_date, start_time, min_players, max_players, game_id), waitlist_number)
                         # notify the admin that a player has been moved from the waitlist to the playerlist
                         for admin_number, _ in adminlist.items():
                             notify_message(f'A player {waitlist_name}:{wa_username} has been added to the playerlist.', admin_number)
