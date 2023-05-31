@@ -10,7 +10,7 @@ import os
 from django.views.decorators.http import require_POST
 from twilio.twiml.messaging_response import MessagingResponse
 from datetime import datetime
-from bot import *
+from bot_util import *
 
 
 
