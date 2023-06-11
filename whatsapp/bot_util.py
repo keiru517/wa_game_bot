@@ -39,7 +39,7 @@ ADMIN_COMMANDS_MESSAGE1="""
 
 -"/create" : Allows a user to create a new game. After this command, you should send message for game info.
 
--"/delete" : Allows a user to delete a game.
+-"/delete (GameID)" : Allows a user to delete a game.
 
 -"/kick (GameID) (Phone Number)" : Allows an admin to remove a player from the player list/wait list of a game and moves them to out list.
 
@@ -495,11 +495,15 @@ def check_waitlist(game_id):
         return [], []
 
 def display_gameinfo(game_id):
-    admin_number, location, start_date, start_time, min_players, max_players, playerlist, waitlist, outlist = get_game_info(game_id)
+    adminlist, location, start_date, start_time, min_players, max_players, playerlist, waitlist, outlist = get_game_info(game_id)
     if len(playerlist) >= min_players:
         INFO_MESSAGE = GAMEINFO_MESSAGE.format(game_id, "✅", len(playerlist), max_players, location, start_date, start_time, min_players, max_players, game_id, game_id)
     else:
         INFO_MESSAGE = GAMEINFO_MESSAGE.format(game_id, "❌", len(playerlist), min_players, location, start_date, start_time, min_players, max_players, game_id, game_id)
+        
+    INFO_MESSAGE += f"\nAdmin List({len(adminlist)})"
+    for phone_number, username in adminlist.items():
+        INFO_MESSAGE += f"{username} : {phone_number}\n"
         
     INFO_MESSAGE += f"\nPlayer List({len(playerlist)}):\n"
     for phone_number, username in playerlist.items():
