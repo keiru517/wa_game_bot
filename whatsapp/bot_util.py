@@ -501,7 +501,7 @@ def display_gameinfo(game_id):
     else:
         INFO_MESSAGE = GAMEINFO_MESSAGE.format(game_id, "❌", len(playerlist), min_players, location, start_date, start_time, min_players, max_players, game_id, game_id)
         
-    INFO_MESSAGE += f"\nAdmin List({len(adminlist)})"
+    INFO_MESSAGE += f"\nAdmin List({len(adminlist)}):\n"
     for phone_number, username in adminlist.items():
         INFO_MESSAGE += f"{username} : {phone_number}\n"
         
